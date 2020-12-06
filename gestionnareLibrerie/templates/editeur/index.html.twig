@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link href="{{ asset('js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
+{% endblock %}
+{% block title %}Editeurs {% endblock %}
+
+{% block body %}
+
+    <div>
+        <a href="{{ path('editeur_new') }}"><span class="btn btn-primary"><i class="fa fa-plus"></i>&nbsp; Nouveau</span> </a>
+    </div>
+    <br>
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nom Editeur</th>
+                <th>Pays</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for i,editeur in editeurs %}
+            <tr>
+                <td>{{ i+1 }}</td>
+                <td>{{ editeur.nomEditeur }}</td>
+                <td>{{ editeur.pays }}</td>
+                <td>{{ editeur.adresse }}</td>
+                <td>{{ editeur.telephone }}</td>
+                <td>
+                    <a href="{{ path('editeur_show', {'id': editeur.id}) }}"><span class="btn btn-default"><i class="fa fa-eye"></i></span></a>
+                    <a href="{{ path('editeur_edit', {'id': editeur.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i></span></a>
+                    <a href="{{ path('editeur_delete_2', {'id': editeur.id}) }}"><span class="btn btn-danger"><i class="fa fa-trash-o"></i></span></a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Pas d'enregistement touvés</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+{% block javascripts %}
+    <!-- DATA TABLE SCRIPTS -->
+    <script src="{{ asset('js/dataTables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('js/dataTables/dataTables.bootstrap.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+    <!-- Custom Js -->
+    <script src="{{ asset('js/custom-scripts.js') }}"></script>
+
+
+{% endblock %}

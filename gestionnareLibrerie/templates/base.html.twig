@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+    <title>{% block title %}Gestion de Bibliothéque{% endblock %}</title>
+    <!-- Bootstrap Styles-->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="{{ asset('css/custom-styles.css') }}" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+<div id="wrapper">
+
+    {% include('top.html.twig') %}
+
+    {% include('menu.html.twig') %}
+    <div id="page-wrapper">
+        <div class="header">
+            <h1 class="page-header">
+                {% block titre %}
+                    {{ titre }}
+                    <small>{{ soustitre }}</small>
+                {% endblock %}
+
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ path('accueil') }}">Acceuil</a></li>
+                <li><a href="{{ lien }}">{{ titre }}</a></li>
+                <li class="active">{{ soustitre }}</li>
+            </ol>
+
+        </div>
+        <div id="page-inner">
+
+            <div class="row">
+                {% block mainBody %}
+                <div class="col-md-12">
+
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+                {% block body %}{% endblock %}
+
+            </div>
+        </div>
+                    </div>
+{% endblock %}
+                </div>
+            </div>
+
+
+
+            {% include('piedpage.html.twig') %}
+        </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+
+
+
+<!-- JS Scripts-->
+<!-- jQuery Js -->
+<script src="../public/js/jquery-1.10.2.js"></script>
+<!-- Bootstrap Js -->
+<script src="../public/js/bootstrap.min.js"></script>
+<!-- Metis Menu Js -->
+<script src="../public/js/jquery.metisMenu.js"></script>
+<!-- Custom Js -->
+<script src="../public/js/custom-scripts.js"></script>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

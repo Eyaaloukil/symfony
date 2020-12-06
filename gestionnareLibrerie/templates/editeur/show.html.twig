@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editeur{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>NomEditeur</th>
+                <td>{{ editeur.nomEditeur }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ editeur.pays }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ editeur.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ editeur.telephone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-6">
+                <a href="{{ path('editeur_index') }}"><span class="btn btn-primary"><i class="fa fa-backward"></i>&nbsp; Retour</span></a>
+                &nbsp;
+                <a href="{{ path('editeur_edit', {'id': editeur.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp; Editer</span></a>
+            </div>
+            {{ include('editeur/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+{% endblock %}

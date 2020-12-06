@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Gest. Biblio{% endblock %}
+
+{% block mainBody %}
+
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="board">
+                    <div class="panel panel-primary">
+                        <div class="number">
+                            <h3>
+                                <h3>{{ nbAuteurs }}</h3>
+                                <small>Auteurs</small>
+                            </h3>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-users fa-5x red"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="board">
+                    <div class="panel panel-primary">
+                        <div class="number">
+                            <h3>
+                                <h3>{{ nbLivres }}</h3>
+                                <small>Livres</small>
+                            </h3>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-book fa-5x blue"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="board">
+                    <div class="panel panel-primary">
+                        <div class="number">
+                            <h3>
+                                <h3>{{ nbEditeurs }}</h3>
+                                <small>Editeurs</small>
+                            </h3>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-pencil fa-5x green"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+        <div class="board">
+            <div class="panel panel-primary">
+                <div class="number">
+                    <h3>
+                        <h3>{{ nbCategories }}</h3>
+                        <small>Catégorie</small>
+                    </h3>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-folder fa-5x yellow"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+{% endblock %}
