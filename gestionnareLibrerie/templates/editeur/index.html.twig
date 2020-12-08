@@ -43,7 +43,13 @@
         {% endfor %}
         </tbody>
     </table>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
 
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
 {% endblock %}
 {% block javascripts %}
     <!-- DATA TABLE SCRIPTS -->

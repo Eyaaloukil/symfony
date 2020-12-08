@@ -113,8 +113,17 @@ class CategorieController extends AbstractController
         else{
             $categorie=$this->getDoctrine()->getRepository(Categorie::class)->findOneBy(['id'=>$id]);
             $entityManager = $this->getDoctrine()->getManager();
+            $livres=$categorie->getLivres();
+            if(count($livres)==0){
             $entityManager->remove($categorie);
             $entityManager->flush();
+            }
+            else {
+                flash()->verify('Delete?','There is no turning back after delete');
+                $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'cette catégorie contient des Livres vous etes sur de la supprimé !');
+            }
             return $this->redirectToRoute('categorie_index');
 
         }

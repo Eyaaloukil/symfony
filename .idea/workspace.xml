@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="7bf2d40f-61ae-471a-9164-e0865d249733" name="Default Changelist" comment="" />
+    <list default="true" id="7bf2d40f-61ae-471a-9164-e0865d249733" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/AuteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/AuteurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/CategorieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/CategorieController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/EditeurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/EditeurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/LivreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/src/Controller/LivreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/templates/auteur/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/templates/auteur/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/templates/categorie/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/templates/categorie/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/templates/editeur/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/templates/editeur/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gestionnareLibrerie/templates/editeur/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/gestionnareLibrerie/templates/editeur/index.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,6 +24,9 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/gestionnareLibrerie/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
@@ -118,6 +135,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1l0QNAIw9TeqW6Q2g8O9P4GkMLS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -149,12 +167,27 @@
       <workItem from="1606934752438" duration="12061000" />
       <workItem from="1607097573430" duration="8939000" />
       <workItem from="1607243119124" duration="1044000" />
-      <workItem from="1607266012165" duration="15691000" />
+      <workItem from="1607266012165" duration="16285000" />
+      <workItem from="1607331558302" duration="6838000" />
+      <workItem from="1607353608706" duration="6764000" />
+      <workItem from="1607417046948" duration="360000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="574" y="114" key="#com.intellij.ide.util.MemberChooser" timestamp="1606944272939">
@@ -165,11 +198,11 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1607104600058" />
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607276200845">
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607335462061">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864/1920.0.1920.1080@0.0.1536.864" timestamp="1607276200845" />
-    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864@0.0.1536.864" timestamp="1606943394365" />
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864@0.0.1536.864" timestamp="1607335462061" />
     <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1607282884206">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

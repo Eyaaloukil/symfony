@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Editeur;
 use App\Form\EditeurType;
 use App\Repository\EditeurRepository;
+use mysql_xdevapi\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -115,8 +116,16 @@ class EditeurController extends AbstractController
         else {
             $editeur = $this->getDoctrine()->getRepository(Editeur::class)->findOneBy(['id' => $id]);
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($editeur);
-            $entityManager->flush();
+            $livres=$editeur->getLivres();
+                if(count($livres)==0){
+                    $entityManager->remove($editeur);
+                    $entityManager->flush();
+                }
+                else {
+                    $this->get('session')->getFlashBag()->add(
+                    'notice',
+                    'Vous ne pouvez pas supprimer cet editeur car il posséde un ou plusieurs livres !');
+                }
             return $this->redirectToRoute('editeur_index');
 
         }

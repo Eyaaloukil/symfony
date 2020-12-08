@@ -93,6 +93,7 @@ class AuteurController extends AbstractController
             return $this->render('auteur/edit.html.twig',[
                 'titre'=>'Auteurs',
                 'soustitre'=>'Editer',
+                'id'=>$id,
                 'lien'=>$this->generateUrl('index_auteur'),
                 'frm'=>$frm->createView(),
             ]);

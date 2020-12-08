@@ -27,7 +27,7 @@
                 <td>
                     <a href="{{ path('categorie_show', {'id': categorie.id}) }}"><span class="btn btn-default"><i class="fa fa-eye"></i></span></a>
                     <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i></span></a>
-                    <a href="{{ path('categorie_delete_2', {'id': categorie.id}) }}"><span class="btn btn-danger"><i class="fa fa-trash-o"></i></span></a>
+                    <a href="{{ path('categorie_delete_2', {'id': categorie.id}) }}" id="deletebutton"><span class="btn btn-danger"><i class="fa fa-trash-o"></i></span></a>
 
                 </td>
             </tr>
@@ -38,6 +38,13 @@
         {% endfor %}
         </tbody>
     </table>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
 
 {% endblock %}
 {% block javascripts %}

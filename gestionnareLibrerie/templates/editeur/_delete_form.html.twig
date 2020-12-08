@@ -1,5 +1,14 @@
+{% block stylesheets %}
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
+{% endblock %}
 <form method="post" action="{{ path('editeur_delete', {'id': editeur.id}) }}" onsubmit="return confirm('Est ce que vous etes sur de supprimer cet editeur?');">
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ editeur.id) }}">
     <button  class="btn btn-danger"><i class="fa fa-trash-o"></i>&nbsp; Supprimer</button>
 </form>
+{% block javascript %}
+document.getElementById('error-message').onclick = function(){
+    swal('Oh no…', 'Smth is wrong!', 'error')
+};
+{% endblock %}
