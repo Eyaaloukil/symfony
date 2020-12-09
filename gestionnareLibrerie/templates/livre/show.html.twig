@@ -35,10 +35,18 @@
                 <th>Editeur</th>
                 <td>{{ livre.editeur.nomediteur }}</td>
             </tr>
+            {% if livre.categorie != null %}
+
             <tr>
                 <th>Catégorie</th>
                 <td>{{ livre.categorie.designation }}</td>
             </tr>
+            {% else %}
+               <tr>
+                <th>Catégorie</th>
+                <td>Rien</td>
+            </tr>
+            {% endif %}
             <tr>
                 <th>Auteurs</th>
                  <td>
