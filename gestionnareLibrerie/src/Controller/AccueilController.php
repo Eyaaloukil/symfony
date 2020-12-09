@@ -23,7 +23,7 @@ class AccueilController extends AbstractController
         $nbCategories=count($this->getDoctrine()->getRepository(Categorie::class)->findAll());
 
         return $this->render('accueil/index.html.twig', [
-            'titre'=>'Acceuil',
+            'titre'=>'Accueil',
             'soustitre'=>'',
             'lien'=>$this->generateUrl('accueil'),
             'nbAuteurs' => $nbAuteurs,

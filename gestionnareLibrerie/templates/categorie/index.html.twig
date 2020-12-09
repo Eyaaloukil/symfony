@@ -25,9 +25,16 @@
                 <td>{{ categorie.designation }}</td>
                 <td>{{ categorie.description }}</td>
                 <td>
-                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"><span class="btn btn-default"><i class="fa fa-eye"></i></span></a>
-                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i></span></a>
-                    <a href="{{ path('categorie_delete_2', {'id': categorie.id}) }}" id="deletebutton"><span class="btn btn-danger"><i class="fa fa-trash-o"></i></span></a>
+    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"><span class="btn btn-default"><i class="fa fa-eye"></i></span></a>
+    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i></span></a>
+<span> 
+   <form method="post" style="display: inline-block;" action="{{ path('categorie_delete', {'id': categorie.id}) }}" onsubmit="return confirm('Est ce que vous etes sur de supprimer cette categorie?');">
+<input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categorie.id) }}">
+    <button class="btn btn-danger"><i class="fa fa-trash-o"></i></button></form>
+
+</span>
+
 
                 </td>
             </tr>
@@ -38,13 +45,16 @@
         {% endfor %}
         </tbody>
     </table>
-    {% for flashMessage in app.session.flashbag.get('notice') %}
+{% for message in app.flashes('success') %}
+            <div class="alert alert-danger">
+                {{ message|split("supprimer")[0] }}
+   <form method="post" style="display: inline-block;" action="{{ path('categorie_delete2', {'id':message|split("supprimer")[1]}) }}" >
+<input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ message|split("supprimer")[1]) }}">
+    <button class="btn btn-danger">Confirmer</button></form>            </div>
+        
+        {% endfor %}
 
-        <div class="alert alert-danger">
-            {{ flashMessage }}
-        </div>
-
-    {% endfor %}
 
 {% endblock %}
 {% block javascripts %}

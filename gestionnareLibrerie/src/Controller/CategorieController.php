@@ -97,37 +97,33 @@ class CategorieController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$categorie->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($categorie);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('categorie_index');
-    }
-    /**
-     * @Route("/supprimer/{id}", name="categorie_delete_2")
-     */
-    public function supprimer(Request $request, int $id=-1): Response
-    {
-        if ($id<=0)
-            return $this->redirectToRoute('categorie_index');
-        else{
-            $categorie=$this->getDoctrine()->getRepository(Categorie::class)->findOneBy(['id'=>$id]);
-            $entityManager = $this->getDoctrine()->getManager();
             $livres=$categorie->getLivres();
             if(count($livres)==0){
             $entityManager->remove($categorie);
             $entityManager->flush();
             }
             else {
-                flash()->verify('Delete?','There is no turning back after delete');
-                $this->get('session')->getFlashBag()->add(
-                    'notice',
-                    'cette catégorie contient des Livres vous etes sur de la supprimé !');
-            }
-            return $this->redirectToRoute('categorie_index');
+                $this->addFlash("success", "Cette catégorie contient un livre ou plus , vous ne pouvez pas la supprimer".$categorie->getId());
 
+            }
         }
 
+        return $this->redirectToRoute('categorie_index');
+    }
+      /**
+     * @Route("supprimer/{id}", name="categorie_delete2", methods={"DELETE"})
+     */
+    public function supprimer(Request $request, Categorie $categorie): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$categorie->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+          
+            $entityManager->remove($categorie);
+            $entityManager->flush();
+          
+        }
+
+        return $this->redirectToRoute('categorie_index');
     }
 }
 

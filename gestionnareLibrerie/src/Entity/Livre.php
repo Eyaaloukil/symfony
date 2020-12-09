@@ -53,7 +53,8 @@ class Livre
     private $editeur;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="livres")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="livres",cascade={"remove"})
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $categorie;
 
