@@ -1,0 +1,84 @@
+{% block stylesheets %}
+  <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+  {% endblock %}
+
+
+
+
+{% block body %}
+
+
+    <table class="table table-striped">
+        <tbody>
+ <tr>
+                <th>Abonné</th>
+                <td>{% if is_granted('ROLE_USER') %}   {{ app.user.nom }}  &nbsp; {{ app.user.prenom }}
+{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ livre.titre }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de pages</th>
+                <td>{{ livre.nbpages }}</td>
+            </tr>
+            <tr>
+                <th>Date d'édition</th>
+                <td>{{ livre.dateedition? livre.dateedition|date('Y-m-d'): '' }}</td>
+            </tr>
+            <tr>
+                <th>Nombre d'exemplaires</th>
+                <td>{{ livre.nbexemplaires }}</td>
+            </tr>
+           
+            <tr>
+                <th>Editeur</th>
+                <td>{{ livre.editeur.nomediteur }}</td>
+            </tr>
+            {% if livre.categorie != null %}
+
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ livre.categorie.designation }}</td>
+            </tr>
+            {% else %}
+               <tr>
+                <th>Catégorie</th>
+                <td>Rien</td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th>Auteurs</th>
+                 <td>
+                         {% for auteur in livre.auteurs %}
+                             <span class="badge badge-primary">  {{ auteur.prenom }} {{ auteur.nom }} </span>
+                         {% endfor %}
+                     </td>
+            </tr>
+            
+     
+            <tr>
+                <th>Date Emprunte</th>
+                <td>{{ "now"|date("m/d/Y") }}
+</td>
+            </tr>
+  <tr>
+                <th>Date Retour</th>
+                <td>{{ "now +7 days"|date("m/d/Y") }}
+</td>
+            </tr>
+        </tbody>
+    </table>
+
+<center>
+    <div class="container">
+        <div class="row">
+                <a href="{{ path('app') }}"><span class="btn btn-primary"><i class="fa fa-backward"></i>&nbsp; Retour</span></a>
+                &nbsp;
+                <a href="{{ path('confirm_emprunt', {'id': livre.id,'id_abon':app.user.id}) }}"><span class="btn btn-success"><i class="fa fa-pencil"></i>&nbsp; Confirmer</span></a>
+
+        </div>
+    </div></center>
+
+{% endblock %}

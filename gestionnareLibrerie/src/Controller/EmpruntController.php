@@ -7,13 +7,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EmpruntRepository;
 use App\Entity\Emprunt;
-/**
- * @Route("/admin/emprunt")
- */
+
 class EmpruntController extends AbstractController
 {
     /**
-     * @Route("/", name="emprunt_index")
+     * @Route("/admin/emprunt", name="emprunt_index")
      */
     public function index(EmpruntRepository $empruntRepository): Response
     {
