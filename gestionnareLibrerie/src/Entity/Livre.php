@@ -68,9 +68,15 @@ class Livre
      */
     private $dateedition;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Emprunt::class, mappedBy="Livre")
+     */
+    private $emprunts;
+
     public function __construct()
     {
         $this->auteurs = new ArrayCollection();
+        $this->emprunts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -194,6 +200,36 @@ class Livre
     public function removeAuteur(Auteur $auteur): self
     {
         $this->auteurs->removeElement($auteur);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Emprunt[]
+     */
+    public function getEmprunts(): Collection
+    {
+        return $this->emprunts;
+    }
+
+    public function addEmprunt(Emprunt $emprunt): self
+    {
+        if (!$this->emprunts->contains($emprunt)) {
+            $this->emprunts[] = $emprunt;
+            $emprunt->setLivre($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmprunt(Emprunt $emprunt): self
+    {
+        if ($this->emprunts->removeElement($emprunt)) {
+            // set the owning side to null (unless already changed)
+            if ($emprunt->getLivre() === $this) {
+                $emprunt->setLivre(null);
+            }
+        }
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AbonneRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -53,6 +55,16 @@ class Abonne implements UserInterface
  *@Assert\EqualTo(propertyPath="password")
  */
     public $confirm_password;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Emprunt::class, mappedBy="Abonne")
+     */
+    private $emprunts;
+
+    public function __construct()
+    {
+        $this->emprunts = new ArrayCollection();
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -123,6 +135,35 @@ class Abonne implements UserInterface
     public function getSalt(){}
     public function getRoles(){
 $roles=$this->roles;
-$roles[]='ROLE_USER';
 return array_unique($roles);    }
+
+    /**
+     * @return Collection|Emprunt[]
+     */
+    public function getEmprunts(): Collection
+    {
+        return $this->emprunts;
+    }
+
+    public function addEmprunt(Emprunt $emprunt): self
+    {
+        if (!$this->emprunts->contains($emprunt)) {
+            $this->emprunts[] = $emprunt;
+            $emprunt->setAbonne($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEmprunt(Emprunt $emprunt): self
+    {
+        if ($this->emprunts->removeElement($emprunt)) {
+            // set the owning side to null (unless already changed)
+            if ($emprunt->getAbonne() === $this) {
+                $emprunt->setAbonne(null);
+            }
+        }
+
+        return $this;
+    }
 }
