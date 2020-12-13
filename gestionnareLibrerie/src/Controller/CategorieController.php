@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/categorie")
+ * @Route("/admin/categorie")
  */
 class CategorieController extends AbstractController
 {
@@ -72,6 +72,7 @@ class CategorieController extends AbstractController
      */
     public function edit(Request $request, Categorie $categorie): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $form = $this->createForm(CategorieType::class, $categorie);
         $form->handleRequest($request);
 

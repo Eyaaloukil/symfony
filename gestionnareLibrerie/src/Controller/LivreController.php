@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/livre")
+ * @Route("/admin/livre")
  */
 class LivreController extends AbstractController
 {
@@ -75,6 +75,7 @@ class LivreController extends AbstractController
      */
     public function edit(Request $request, Livre $livre): Response
     {
+
         $form = $this->createForm(LivreType::class, $livre);
         $form->handleRequest($request);
 
