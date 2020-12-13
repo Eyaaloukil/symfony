@@ -19,7 +19,7 @@
 {% for emprunt in emprunts %} <tr>
                 <th>{{emprunt.Livre.titre}}</th>
                                 <td>{{ emprunt.getDateRetour() ? emprunt.getDateRetour()|date('Y-m-d'): ''}}</td>
-                                           <td><a><button class="btn btn-danger" type="button">Retourner le livre</button></a></td>
+                                           <td><a href="{{path('delete_emprunt',{'id':emprunt.Livre.id})}}"><button class="btn btn-danger" type="button">Retourner le livre</button></a></td>
 
             </tr>
 {% endfor %}

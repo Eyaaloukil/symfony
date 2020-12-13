@@ -116,5 +116,19 @@ $emprunt->setDateRetour(new \DateTime("+7 days"));
 
         ]);
     }
+ /**
+     * @Route("/delete/{id}", name="delete_emprunt")
+     */
+    public function delete(Request $request, Livre $livre): Response
+    {
+        $abonne = $this->get('security.token_storage')->getToken()->getUser();
+        $emprunt=$this->getDoctrine()->getRepository(Emprunt::class)->findOneBy(['Abonne'=>$abonne,'Livre'=>$livre]);
 
+        $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($emprunt);
+            $entityManager->flush();
+        
+
+        return $this->redirectToRoute('app');
+    }
 }
