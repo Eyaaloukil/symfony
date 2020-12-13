@@ -82,7 +82,7 @@
                 <i class="fa fa-user fa-fw"></i>{% if is_granted('ROLE_ADMIN') %}
    {{ app.user.nom }}  &nbsp; {{ app.user.prenom }}
 
-{% endif %} <i class="fa fa-caret-down"></i>
+{% endif %} <i class="fa fa-caret-down">&nbsp;</i>
   </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     <li><a class="dropdown-item" href="{{path('security_logout')}}">Déconnexion</a></li>
