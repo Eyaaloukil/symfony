@@ -19,6 +19,7 @@ class LivreType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('image',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'image'])
             ->add('titre',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Titre'])
             ->add('nbpages',NumberType::class,['attr'=>['class'=>'form-control'],'label'=>'Nombre de pages'])
             ->add('dateedition',DateType::class,['widget'=>'single_text','attr'=>['class'=>'form-control'],'label'=>"date d'édition"])

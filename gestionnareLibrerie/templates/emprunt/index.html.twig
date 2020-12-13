@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-    <link href="{{ asset('js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet"/>
 {% endblock %}
 {% block title %}index Emprunte{% endblock %}
 
 {% block body %}
 
-   
+
     <br>
     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
-            <tr>
-                <th>#</th>
-                <th>Abonné</th>
-                <th>Livre</th>
-                                <th>Date emprunte</th>
-                                <th>Date retour</th>
+        <tr>
+            <th>#</th>
+            <th>Abonné</th>
+            <th>Livre</th>
+            <th>Date emprunte</th>
+            <th>Date retour</th>
 
 
-            </tr>
+        </tr>
         </thead>
         <tbody>
         {% for emprunt in emprunts %}
@@ -26,8 +26,8 @@
                 <td>{{ emprunt.id }}</td>
                 <td>{{ emprunt.Abonne.nom }}&nbsp;{{ emprunt.Abonne.prenom }}</td>
                 <td>{{ emprunt.Livre.titre }}</td>
-                                <td>{{ emprunt.getDateEmprunt() ? emprunt.getDateEmprunt()|date('Y-m-d'): ''}}</td>
-                                <td>{{ emprunt.getDateRetour() ? emprunt.getDateRetour()|date('Y-m-d'): ''}}</td>
+                <td>{{ emprunt.getDateEmprunt() ? emprunt.getDateEmprunt()|date('Y-m-d'): '' }}</td>
+                <td>{{ emprunt.getDateRetour() ? emprunt.getDateRetour()|date('Y-m-d'): '' }}</td>
 
             </tr>
         {% else %}

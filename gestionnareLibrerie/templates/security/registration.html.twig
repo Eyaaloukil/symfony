@@ -1,5 +1,9 @@
-{% block title %}Inscription{% endblock %}
-
+{% block stylesheets %}
+    <!-- Bootstrap Styles-->
+    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="{{ asset('css/bootstrap-theme.min.css') }}" rel="stylesheet" />
+{% endblock %}
 {% block body %}
 <h1>Inscription</h1>
 {{form_start(form)}}
@@ -8,3 +12,4 @@
 {{form_end(form)}}
 
 {% endblock %}
+

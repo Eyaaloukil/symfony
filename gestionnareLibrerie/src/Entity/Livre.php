@@ -23,6 +23,10 @@ class Livre
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $image;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $titre;
 
     /**
@@ -92,6 +96,17 @@ class Livre
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
