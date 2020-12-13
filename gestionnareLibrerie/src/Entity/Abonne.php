@@ -32,7 +32,10 @@ class Abonne implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $nom;
-
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles=[];
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email()
@@ -119,6 +122,7 @@ class Abonne implements UserInterface
     }
     public function getSalt(){}
     public function getRoles(){
-        return ['ROLE_USER'];
-    }
+$roles=$this->roles;
+$roles[]='ROLE_USER';
+return array_unique($roles);    }
 }
