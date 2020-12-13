@@ -67,13 +67,17 @@ class SecurityController extends AbstractController
     public function show(Livre $livre): Response
     {
         $startdate=strtotime(date("m/d/Y"));
+        $em = $this->getDoctrine()->getManager();
+
         $enddate=strtotime("+6 days", $startdate);
+        $nbLivres=count($this->getDoctrine()->getRepository(Emprunt::class)->findBy(['Livre'=>$livre]));
 
         return $this->render('app/show.html.twig', [
 
             'livre' => $livre,
             'startdate' =>$startdate,
-            'enddate' =>$enddate
+            'enddate' =>$enddate,
+            'count'=>$nbLivres
 
         ]);
     } /**
@@ -87,7 +91,6 @@ $emprunt->setLivre($livre);
 $abonne = $this->get('security.token_storage')->getToken()->getUser();
 $emprunt->setAbonne($abonne);
 
-
 $emprunt->setDateEmprunt(new \DateTime());
 
 $emprunt->setDateRetour(new \DateTime("+7 days"));
@@ -98,6 +101,20 @@ $emprunt->setDateRetour(new \DateTime("+7 days"));
 
             return $this->redirectToRoute('app');
    }
+/**
+     * @Route("app/user/{id}", name="emprunt_list", methods={"GET"})
+     */
+    public function list(Abonne $abonne): Response
+    {
 
+        $nbLivres=$this->getDoctrine()->getRepository(Emprunt::class)->findBy(['Abonne'=>$abonne]);
+
+        return $this->render('app/list.html.twig', [
+
+  
+            'emprunts'=>$nbLivres
+
+        ]);
+    }
 
 }
