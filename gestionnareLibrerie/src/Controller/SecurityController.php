@@ -10,7 +10,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Doctrine\ORM\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Abonne;
+use App\Entity\Emprunt;
+
 use App\Repository\LivreRepository;
+use App\Repository\AbonneRepository;
 
 use App\Form\RegistrationType;
 class SecurityController extends AbstractController
@@ -74,17 +77,20 @@ class SecurityController extends AbstractController
 
         ]);
     } /**
-    * @Route("/{id}/{id_abon}", name="confirm_emprunt", methods={"GET","POST"})
+    * @Route("/{id}", name="confirm_emprunt", methods={"GET","POST"})
     */
-   public function confirm(Request $request, Livre $livre,Abonne $abonne): Response
+   public function confirm(Request $request, Livre $livre): Response
    {
 
 $emprunt=new Emprunt();
 $emprunt->setLivre($livre);
+$abonne = $this->get('security.token_storage')->getToken()->getUser();
 $emprunt->setAbonne($abonne);
-$date=date("Y/m/d");
-$emprunt->setDateEmprunt($date);
-$emprunt->setDateRetour($date);
+
+
+$emprunt->setDateEmprunt(new \DateTime());
+
+$emprunt->setDateRetour(new \DateTime("+7 days"));
 
        $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($emprunt);
