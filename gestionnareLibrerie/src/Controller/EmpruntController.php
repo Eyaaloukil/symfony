@@ -22,4 +22,5 @@ class EmpruntController extends AbstractController
             'emprunts' => $empruntRepository->findAll(),
         ]);
     }
+    
 }
