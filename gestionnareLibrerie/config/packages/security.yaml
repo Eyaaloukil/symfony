@@ -22,10 +22,10 @@ security:
             form_login:
                 login_path: security_login
                 check_path: security_login
-                default_target_path: accueil
+                default_target_path: app
             logout: 
                 path: security_logout
-                target: security_login
+                target: app
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

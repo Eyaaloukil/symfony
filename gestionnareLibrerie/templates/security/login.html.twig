@@ -8,24 +8,27 @@
 					</span>
 
         <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-            <input class="input100"  type="email" name="_username"  id="exampleInputEmail1"
-                   aria-describedby="emailHelp" >
+            <label for="exampleInputEmail1">Email</label>
+            <input class="input100" type="email" name="_username" id="exampleInputEmail1"
+                   aria-describedby="emailHelp">
             <span class="focus-input100"></span>
-            <span class="label-input100">Email</span>
+
         </div>
-        <div  class="wrap-input100 validate-input" data-validate="Password is required">
-            <input type="password" name="_password" class="input100"  id="exampleInputPassword1"
+        <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="_password" class="input100" id="exampleInputPassword1"
                    placeholder="Password">
             <span class="focus-input100"></span>
-            <span class="label-input100">Password</span>
+
         </div>
+        <br>
         <div class="container-login100-form-btn">
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
         <div class="text-center p-t-46 p-b-20">
-						<a href="{{ path('security_registration') }}">
-							or sign up using
-						</a>
+            <a href="{{ path('security_registration') }}">
+                or sign up using
+            </a>
         </div>
 
     </form>
