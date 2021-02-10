@@ -11,6 +11,7 @@ use Doctrine\ORM\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Abonne;
 use App\Entity\Emprunt;
+use App\Repository\CategorieRepository;
 
 use App\Repository\LivreRepository;
 use App\Repository\AbonneRepository;
@@ -58,11 +59,16 @@ class SecurityController extends AbstractController
     public function index(LivreRepository $livreRepository): Response{
         return $this->render('app/index.html.twig', [
             
-            'livres' => $livreRepository->findAll(),
+            'livres' => $livreRepository->findBy(
+                array(),
+                array('id' => 'DESC'),
+                3,
+                0
+            ),
         ]);
     }
     /**
-     * @Route("app/{id}", name="emprunt_show", methods={"GET"})
+     * @Route("app/emprunt/{id}", name="emprunt_show", methods={"GET"})
      */
     public function show(Livre $livre): Response
     {
@@ -130,5 +136,26 @@ $emprunt->setDateRetour(new \DateTime("+7 days"));
         
 
         return $this->redirectToRoute('app');
+    }
+     /**
+     * @Route("/app/livres",name="app_livres", methods={"GET"})
+     */
+    public function tous(LivreRepository $livreRepository,Request $request,CategorieRepository $categorieRepository): Response{
+        
+        $categ_id=$request->query->get('category_id');
+        
+        if(isset($categ_id)){
+            $livres = $livreRepository->findBy([
+                'categorie' => $categ_id            ]);
+        }
+        else{
+            $livres=$livreRepository->findAll();
+        }
+
+        return $this->render('app/listlivres.html.twig', [
+            'livres'=>$livres,
+            'categories'=>$categorieRepository->findAll()
+           
+        ]);
     }
 }
