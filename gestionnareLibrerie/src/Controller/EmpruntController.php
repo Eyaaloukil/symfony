@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\EmpruntRepository;
 use App\Entity\Emprunt;
+use Symfony\Component\Mime\Email;
+
+use Symfony\Component\Mailer\MailerInterface;
 
 class EmpruntController extends AbstractController
 {
@@ -37,6 +40,27 @@ class EmpruntController extends AbstractController
             'abonnes'=>$abonnes,
             'abonnee'=>$abonnee
         ]);
+    }
+    /**
+     * @Route("/sendmail/{id}", name="send_mail", methods={"GET","POST"})
+     */
+    public function sendEmail(Emprunt $emprunt,MailerInterface $mailer,Request $request)
+    {
+      
+        $email = (new Email())
+            ->from('belghuithkadhem@gmail.com')
+            ->to($emprunt->getAbonne()->getEmail())
+            //->cc('cc@example.com')
+            //->bcc('bcc@example.com')
+            //->replyTo('fabien@example.com')
+            //->priority(Email::PRIORITY_HIGH)
+            ->subject('[Rappel] Retourner le livre')
+            ->html('<p>Bonjour</p><p>Priére de retourner le livre '.$emprunt->getLivre()->getTitre().' emrpunté le '.$emprunt->getDateEmprunt()->format('Y-m-d'). ' le plus tot possible</p>
+            <p>Bien Cordialement</p>');
+
+        $mailer->send($email);
+        return $this->redirectToRoute("emprunt_index");
+
     }
     
 }

@@ -40,6 +40,17 @@ class LivreController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $uploadedFile=$form->get('image')->getData();
+            $destination = $this->getParameter('kernel.project_dir').'/public/uploads';
+
+
+            $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+            $newFilename = "test1".'-'.uniqid().'.'.$uploadedFile->guessExtension();
+            $uploadedFile->move(
+                $destination,
+                $newFilename
+            );
+            $livre->setImage($newFilename);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($livre);
             $entityManager->flush();

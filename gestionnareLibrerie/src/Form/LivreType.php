@@ -13,14 +13,16 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class LivreType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('image',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'image'])
-            ->add('titre',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Titre'])
+        ->add('image', FileType::class, [
+            'required' => false,'attr'=>['class'=>'form-control']
+        ])            ->add('titre',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Titre'])
             ->add('nbpages',NumberType::class,['attr'=>['class'=>'form-control'],'label'=>'Nombre de pages'])
             ->add('dateedition',DateType::class,['widget'=>'single_text','attr'=>['class'=>'form-control'],'label'=>"date d'édition"])
             ->add('nbexemplaires',NumberType::class,['attr'=>['class'=>'form-control'],'label'=>"nombre d'exemplaires"])

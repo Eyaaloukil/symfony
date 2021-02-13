@@ -58,8 +58,12 @@
                 <td>{{ emprunt.Abonne.nom }}&nbsp;{{ emprunt.Abonne.prenom }}</td>
                 <td>{{ emprunt.Livre.titre }}</td>
                 <td>{{ emprunt.getDateEmprunt() ? emprunt.getDateEmprunt()|date('Y-m-d'): '' }}</td>
-                <td>{{ emprunt.getDateRetour() ? emprunt.getDateRetour()|date('Y-m-d'): '' }}</td>
+            <td>{{ emprunt.getDateRetour() ? emprunt.getDateRetour()|date('Y-m-d'): '' }}</td>
+             {% if date(emprunt.getDateRetour()) < date() %}
+               <td><a href="{{ path('send_mail', {'id': emprunt.id}) }}"> <button class="btn btn-danger" >Envoyer un rappel</button></a></td>
+{% else %}
 
+{% endif %}
             </tr>
         {% else %}
             <tr>

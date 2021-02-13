@@ -85,14 +85,15 @@
 
                 <div class="col-3">
                 <div class="card" height="150px">
-<img src="../../assets/img/{{ livre.image }}" alt="" />
+<img src="../../uploads/{{ livre.image }}" alt="" />
   <div class="card-body">
     <h5 class="card-title">Titre : {{ livre.titre }}</h5>
     <p class="card-text">Nombre des pages
                                 :{{ livre.nbpages }}</p>
 
-                                       
-    <a  href="{{ path('emprunt_show',{'id': livre.id}) }}" class="btn btn-primary">Emprunter livre</a></div>
+                  {% if is_granted('ROLE_USER') %}
+                                     
+    <a  href="{{ path('emprunt_show',{'id': livre.id}) }}" class="btn btn-primary">Emprunter livre</a>{% endif %}</div>
   </div>
                     
                 </div>

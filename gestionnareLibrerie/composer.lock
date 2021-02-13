@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "de6a1585f2c10291a1336d52dbfa2673",
+    "content-hash": "4cc97b65cbe582b2bd374dda81276a3f",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -3375,6 +3375,68 @@
             "time": "2020-11-27T14:11:20+00:00"
         },
         {
+            "name": "symfony/google-mailer",
+            "version": "v4.4.19",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/google-mailer.git",
+                "reference": "441f147a329db99f7d7c351654c7c8e2f5585b1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/google-mailer/zipball/441f147a329db99f7d7c351654c7c8e2f5585b1a",
+                "reference": "441f147a329db99f7d7c351654c7c8e2f5585b1a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "symfony/mailer": "^4.4|^5.0"
+            },
+            "require-dev": {
+                "symfony/http-client": "^4.3|^5.0"
+            },
+            "type": "symfony-bridge",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\Bridge\\Google\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Google Mailer Bridge",
+            "homepage": "https://symfony.com",
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-01-01T09:24:35+00:00"
+        },
+        {
             "name": "symfony/http-client",
             "version": "v4.4.17",
             "source": {
@@ -3845,16 +3907,16 @@
         },
         {
             "name": "symfony/mailer",
-            "version": "v4.4.17",
+            "version": "v4.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mailer.git",
-                "reference": "ee9d1337d46d46d9022da7711c2f80614e3d9cda"
+                "reference": "38b6dcb4bb265fa4f003b0f42dd42fb91cbd877b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/ee9d1337d46d46d9022da7711c2f80614e3d9cda",
-                "reference": "ee9d1337d46d46d9022da7711c2f80614e3d9cda",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/38b6dcb4bb265fa4f003b0f42dd42fb91cbd877b",
+                "reference": "38b6dcb4bb265fa4f003b0f42dd42fb91cbd877b",
                 "shasum": ""
             },
             "require": {
@@ -3902,7 +3964,7 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony Mailer Component",
+            "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "funding": [
                 {
@@ -3918,7 +3980,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-28T20:42:29+00:00"
+            "time": "2021-01-27T09:09:26+00:00"
         },
         {
             "name": "symfony/mime",
@@ -6577,12 +6639,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
